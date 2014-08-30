@@ -14,13 +14,16 @@
 # limitations under the License.
 #
 
+# inherit from the proprietary version
+-include vendor/oppo/find7/BoardConfigVendor.mk
+
 # Inherit from MSM8974 common
 -include device/oppo/msm8974-common/BoardConfigCommon.mk
 
 # Kernel
 TARGET_KERNEL_CONFIG := cyanogenmod_bacon_defconfig
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/bacon/mkbootimg.mk
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.selinux=permissive
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/bacon/bluetooth
@@ -45,12 +48,7 @@ RECOVERY_VARIANT := cm
 
 TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
-TARGET_INIT_VENDOR_LIB := libinit_bacon
-
 TARGET_WCNSS_MAC_PREFIX := e8bba8
-
-# Workaround for factory issue
-BOARD_VOLD_CRYPTFS_MIGRATE := true
 
 BOARD_NFC_CHIPSET := pn547
 BOARD_NFC_HAL_SUFFIX := bacon
